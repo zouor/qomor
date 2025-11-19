@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SONIC MOTORS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function() {
+      $('.hamburger').click(function() {
+        $('#navbar').toggleClass('active');
+      });
+
+
+      if ($(window).width() > 500) {
+        $('#navbar .sub').each(function() {
+          $(this).show();
+          var width = $(this).outerWidth();
+          $(this).css('width', (width * 0.8) + 'px');
+          $(this).hide();
+        });
+
+        $('nav > ul > li').mouseover(function() {
+          $(this).children('.sub').stop().slideDown(250);
+          $(this).children('a').css('font-weight', '700');
+        });
+
+        $('nav > ul > li').mouseleave(function() {
+          $(this).children('.sub').stop().slideUp(250);
+          $(this).children('a').css('font-weight', '400');
+        });
+
+        $('#navbar .sub a').mouseover(function() {
+          $(this).css('color', '#000').css('font-weight', '700');
+        }).mouseleave(function() {
+          $(this).css('color', '#9C9CA2').css('font-weight', '400');
+        });
+      } else {
+
+        $('#navbar > .innerbox > li > a').click(function(e) {
+          var $parent = $(this).parent();
+          var $sub = $parent.find('.sub');
+          
+          if ($sub.length > 0) {
+            e.preventDefault();
+            $sub.toggleClass('active');
+            
+            $('#navbar > .innerbox > li').not($parent).find('.sub').removeClass('active');
+          }
+        });
+      }
+
+      var swiper = new Swiper(".mySwiper", {
+        slidesPerView: 'auto',
+        spaceBetween: 50,
+        centeredSlides: true,
+        loop: false,
+        grabCursor: true,
+        initialSlide: 0,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+      });
+    });
+  </script>
+</head>
+
+<body>
+  <main>
+    <header>
+      <div class="logo">
+        <img src="./image/logo.png" alt="SONIC MOTORS 로고">
+      </div>
+      <button class="hamburger" aria-label="메뉴">
+        <img src="./image/hamburger.svg" alt="메뉴">
+      </button>
+      <nav id="navbar">
+        <ul class="innerbox">
+          <li>
+            <a href="#">회사소개</a>
+          </li>
+          <li>
+            <a href="#">차량판매</a>
+            <div class="sub">
+              <ul>
+                <li><a href="#">차량견적 조회</a></li>
+                <li><a href="#">작업 갤러리</a></li>
+                <li><a href="#">서비스 센터</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">브랜드</a>
+            <div class="sub">
+              <ul>
+                <li><a href="#">KW SUSPENSION</a></li>
+                <li><a href="#">AKRAPOVIC</a></li>
+                <li><a href="#">RECARO</a></li>
+                <li><a href="#">NOVITEC</a></li>
+                <li><a href="#">HRE</a></li>
+                <li><a href="#">jpktxx5</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">테슬라</a>
+            <div class="sub">
+              <ul>
+                <li><a href="#">튜닝</a></li>
+                <li><a href="#">정비</a></li>
+              </ul>
+            </div>
+          </li>
+          <li>
+            <a href="#">고객센터</a>
+          </li>
+          <li>
+            <a href="#">스마트스토어</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <h1>All the cars in the world</h1>
+        <p>One stop Service Provider</p>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>About</h2>
+      <p>SONIC은 자동차와 관련된 모든 것을 제공하는 <br>Mobility Life Solution 회사입니다.</p>
+      <a href="#" class="btn">View More</a>
+      <img src="./image/sub_banner_01.png" alt="회사 소개 이미지">
+    </section>
+
+    <section class="mission">
+      <div class="mission-info">
+        <h2>Mission & Vision</h2>
+        <p>혁신적인 서비스와 차별화된 제품을 제공합니다.<br>고객의 드라이빙 라이프를 한 단계 업그레이드하세요.</p>
+      </div>
+
+      <div class="mission-cards">
+        <div class="card">
+          <h3>Specialist</h3>
+          <p>20년의 업력과 업계 최고의 기술력을 가진 1세대 전문가 집단.<br>
+          자동차 관련 모든 것을 제공하는 One stop Service Provider.</p>
+        </div>
+
+        <div class="card">
+          <h3>Ownership</h3>
+          <p>'고객의 차는 곧 내 차'라는 마인드로 고객에게 인정받는 감동적인 서비스 제공</p>
+        </div>
+
+        <div class="card">
+          <h3>Car Enthusiast</h3>
+          <p>자동차, 모터스포츠 관련 최고의 열정, 몰입도, 지식 보유</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cars">
+      <h2>CAR</h2>
+      <p class="car-in">판매차량 소개</p>
+
+      <div class="swiper mySwiper">
+        <div class="car-slider swiper-wrapper">
+          <article class="car-item swiper-slide">
+            <div class="car-brand">BUGATTI</div>
+            <p class="car-name">Bugatti Chiron 110 ans</p>
+            <p class="car-price">6,500,000,000원</p>
+            <img src="./image/car_01.png" alt="Bugatti Chiron 110 ans">
+            <div class="car-info">
+              <a href="#">모델정보</a>
+              <a href="#">전체보기</a>
+            </div>
+          </article>
+
+          <article class="car-item swiper-slide">
+            <div class="car-brand">FERRARI</div>
+            <p class="car-name">Ferrari LaFerrari</p>
+            <p class="car-price">5,000,000,000원</p>
+            <img src="./image/car_02.png" alt="Ferrari LaFerrari">
+            <div class="car-info">
+              <a href="#">모델정보</a>
+              <a href="#">전체보기</a>
+            </div>
+          </article>
+
+          <article class="car-item swiper-slide">
+            <div class="car-brand">LAMBORGHINI</div>
+            <p class="car-name">Lamborghini Veneno</p>
+            <p class="car-price">4,500,000,000원</p>
+            <img src="./image/car_03.png" alt="Lamborghini Veneno">
+            <div class="car-info">
+              <a href="#">모델정보</a>
+              <a href="#">전체보기</a>
+            </div>
+          </article>
+
+          <article class="car-item swiper-slide">
+            <div class="car-brand">LAMBORGHINI2</div>
+            <p class="car-name">Lamborghini Veneno</p>
+            <p class="car-price">4,500,000,000원</p>
+            <img src="./image/car_03.png" alt="Lamborghini Veneno">
+            <div class="car-info">
+              <a href="#">모델정보</a>
+              <a href="#">전체보기</a>
+            </div>
+          </article>
+
+          <article class="car-item swiper-slide">
+            <div class="car-brand">LAMBORGHINI3</div>
+            <p class="car-name">Lamborghini Veneno</p>
+            <p class="car-price">4,500,000,000원</p>
+            <img src="./image/car_03.png" alt="Lamborghini Veneno">
+            <div class="car-info">
+              <a href="#">모델정보</a>
+              <a href="#">전체보기</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="services">
+      <div class="service1">
+        <div class="service-content">
+          <h3>소닉모터스 지점안내</h3>
+          <p>가까운 센터에서 프리미엄 차량을 경험하고 체험해보세요.<br>
+          차량 구매부터 정비, 튜닝까지 안심하고 이용할 수 있어요.</p>
+          <a href="#">자세히 보기</a>
+        </div>
+      </div>
+
+      <div class="service-bottom">
+        <div class="service2">
+          <div class="service-content">
+            <h3>브랜드</h3>
+            <p>프리미엄 장비 브랜드를 만나보세요.<br>공식 수입처, 소닉이 함께합니다.</p>
+            <a href="#">자세히 보기</a>
+          </div>
+        </div>
+
+        <div class="service3">
+          <div class="service-content">
+            <h3>차량 판매</h3>
+            <p>믿고 구매할 수 있는 프리미엄 수입차를 안심하고 만나보세요!</p>
+            <a href="#">자세히 보기</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tesla">
+      <h3>Tesla</h3>
+      <p>테슬라 전문 튜닝점<br>소닉모터스와 함께 하세요.</p>
+      <a href="#" class="btn">View More</a>
+      <img src="./image/sub_banner_02.png" alt="테슬라 튜닝 서비스">
+    </section>
+
+    <section class="brands">
+      <h2>BRAND</h2>
+      <p>소닉모터스는 다양한 브랜드들과 함께하고 있습니다.</p>
+      <div class="brand-logos">
+        <div class="brand-logos-wrapper">
+          <img src="./image/logo_1.png" alt="브랜드 로고 1">
+          <img src="./image/logo_2.png" alt="브랜드 로고 2">
+          <img src="./image/logo_3.png" alt="브랜드 로고 3">
+          <img src="./image/logo_4.png" alt="브랜드 로고 4">
+          <img src="./image/logo_5.png" alt="브랜드 로고 5">
+          <img src="./image/logo_6.png" alt="브랜드 로고 6">
+          <img src="./image/logo_1.png" alt="브랜드 로고 1">
+          <img src="./image/logo_2.png" alt="브랜드 로고 2">
+          <img src="./image/logo_3.png" alt="브랜드 로고 3">
+          <img src="./image/logo_4.png" alt="브랜드 로고 4">
+          <img src="./image/logo_5.png" alt="브랜드 로고 5">
+          <img src="./image/logo_6.png" alt="브랜드 로고 6">
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <div class="column">
+          <h4>회사소개</h4>
+          <ul>
+            <li>차량 판매</li>
+            <li>차량 견적 조회</li>
+            <li>작업 갤러리</li>
+            <li>서비스 센터</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h4>브랜드</h4>
+          <ul>
+            <li>KW SUSPENSION</li>
+            <li>AKRAPOVIC</li>
+            <li>RECARO</li>
+            <li>NOVITEC</li>
+            <li>HRE</li>
+          </ul>
+        </div>
+        <div class="column">
+          <h4>테슬라</h4>
+          <ul>
+            <li>튜닝</li>
+            <li>정비</li>
+          </ul>
+        </div>
+        <div class="column"><h4>고객센터</h4></div>
+        <div class="column"><h4>스마트 스토어</h4></div>
+      </div>
+
+      <div class="footer-info">
+        <h4>SONIC</h4>
+        <p>
+          서울시 강남구 논현로67길 60번지 1층 | 대표 : 박승원<br>
+          사업자등록번호 : 847-85-00482 | 통신판매업신고번호 : 2015-서울강남-00916호<br>
+          대표번호 : 010-6279-6000
+        </p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+</body>
+</html>
